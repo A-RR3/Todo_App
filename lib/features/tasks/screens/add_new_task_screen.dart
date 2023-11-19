@@ -17,7 +17,7 @@ class AddNewTaskScreen extends StatelessWidget {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-        // backgroundColor: greyShadow,
+        backgroundColor: greyShadow,
         onClosing: () {},
         builder: (context) {
           return Padding(

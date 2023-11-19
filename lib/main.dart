@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:training_task1/core/values/colors.dart';
 import 'features/home/screens/home_screen.dart';
 
 void main() {
