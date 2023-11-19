@@ -28,15 +28,15 @@ class TaskItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<HomeController>();
 
-    Color _checkCircleColor() {
+    Color checkCircleColor() {
       return task.isCompleted ? Colors.blue : Colors.transparent;
     }
 
-    Color _checkCircleBorderColor() {
+    Color checkCircleBorderColor() {
       return task.isCompleted ? Colors.blue : Colors.white;
     }
 
-    IconData? _getTheRightIcon() {
+    IconData? getTheRightIcon() {
       return task.isCompleted ? Icons.check : null;
     }
 
@@ -70,13 +70,13 @@ class TaskItem extends StatelessWidget {
                               height: 20,
                               width: 20,
                               decoration: BoxDecoration(
-                                  color: _checkCircleColor(),
+                                  color: checkCircleColor(),
                                   borderRadius: BorderRadius.circular(50),
                                   // border: Border.all(color: getTheRightColor()),
                                   border: Border.all(
-                                    color: _checkCircleBorderColor(),
+                                    color: checkCircleBorderColor(),
                                   )),
-                              child: Icon(_getTheRightIcon(), size: 16)),
+                              child: Icon(getTheRightIcon(), size: 16)),
                         ),
                         const SizedBox(
                           width: 20,
@@ -92,13 +92,13 @@ class TaskItem extends StatelessWidget {
                               margin: const EdgeInsets.only(bottom: 6),
                               child: Text(
                                 "${task.title}",
-                                style: textTheme(20, null, null),
+                                style: textTheme(16, null, null),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               )),
                           Text(
                             "${Get.find<HomeController>().formatDay(task)} ${task.time}",
-                            style: textTheme(18, null, null),
+                            style: textTheme(14, null, null),
                           )
                         ],
                       ),

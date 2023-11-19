@@ -28,14 +28,14 @@ class EmptyHomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           "What do you want to do today?\n",
-                          style: textTheme(22, null, null),
+                          style: textTheme(18, null, null),
                         ),
                         const SizedBox(
                           height: 5,
                         ),
                         Text(
                           "Tap + to add your tasks",
-                          style: textTheme(20, FontWeight.normal, null),
+                          style: textTheme(16, FontWeight.normal, null),
                         )
                       ],
                     )

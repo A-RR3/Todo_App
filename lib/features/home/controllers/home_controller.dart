@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:training_task1/data/data.dart';
+import 'package:training_task1/data/datasource/data_base.dart';
 import 'package:training_task1/domain/interactors/impl/task_interactor_impl.dart';
 import 'package:training_task1/utils/helpers.dart';
 import 'package:training_task1/domain/interactors/impl/category_interactor_impl.dart';
@@ -18,9 +19,6 @@ class HomeController extends GetxController {
   RxInt get tasksCount => taskList.length.obs;
 
   //database
-  // TaskService dbHelper = TaskService();
-  // StorageService dbHelper = Get.put(StorageService());
-  // StorageService dbHelper = StorageService();
   TasksInteractorImpl service = TasksInteractorImpl();
 
   @override
@@ -67,7 +65,6 @@ class HomeController extends GetxController {
 
   void markAsCompleted(Task task) async {
     if (task.isCompleted == false) {
-      // int isCompleted = 1;
       task.isCompleted = true;
       await service.updateTask(task);
       await getTasks();
@@ -86,10 +83,6 @@ class HomeController extends GetxController {
     task.isCompleted = completed;
     await service.updateTask(task);
     await getTasks();
-    // taskList
-    //     .singleWhere((element) => element.id == task.id)
-    //     .copyWith(isCompleted: completed);
-    // taskList.refresh();
     getDoneTasks();
   }
 
@@ -109,29 +102,7 @@ class HomeController extends GetxController {
 
   void onAddNewTaskPressed() {
     Get.bottomSheet(const AddNewTaskScreen());
-    // dbHelper.deleteDataBaseI();
   }
 
-  // Future<void> createCategories() async {
-  //   List<Category> categories = [
-  //      Category.create(
-  //         name: 'education',
-  //         icon: Icons.school,
-  //         color: Color.fromARGB(255, 99, 200, 250)),
-  //      Category.create(
-  //       name: 'food',
-  //       icon: Icons.food_bank,
-  //       color: Colors.orange),
-  //      Category.create(
-  //       name: 'home',
-  //       icon: Icons.home,
-  //       color: Colors.green),
-  //      Category.create(
-  //       name: 'personal',
-  //       icon: Icons.person,
-  //       color: Colors.lightBlue),
-  //   ];
 
-  //   await dbHelper.createCategories(categories);
-  // }
 }

@@ -19,14 +19,14 @@ class CommonTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      style: const TextStyle(fontSize: 15),
+      // style: const TextStyle(fontSize: 15),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(10),
         hintText: hintText,
         hintStyle: const TextStyle(
-            color: Colors.white70, fontSize: 17, fontWeight: FontWeight.w300),
+            color: Colors.white70, fontSize: 18, fontWeight: FontWeight.w300),
         errorText: errorText,
-        errorStyle: const TextStyle(fontSize: 15, color: Colors.red),
+        errorStyle: const TextStyle(fontSize: 14, color: Colors.red),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
         filled: true,
         fillColor: greyShadow,

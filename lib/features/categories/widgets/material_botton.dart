@@ -25,7 +25,7 @@ class MyMaterialBotton extends StatelessWidget {
           onPressed: onPress,
           child: Text(
             text,
-            style: textTheme(18, null, null),
+            style: textTheme(14, null, null),
           )),
     );
   }

@@ -34,7 +34,7 @@ class CategoryCard extends StatelessWidget {
                 ),
                 Text(
                   category.name,
-                  style: textTheme(16, null, null),
+                  style: textTheme(12, null, null),
                 )
               ],
             ),

@@ -23,8 +23,8 @@ class CategoriesInteractorImpl implements CategoriesInteractor {
     return await _gateway.createCategory(category);
   }
 
-   @override
+  @override
   Future<int> deleteCategory(Category category) async {
-    return await _gateway.createCategory(category);
+    return await _gateway.deleteCategory(category);
   }
 }
