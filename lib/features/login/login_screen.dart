@@ -1,29 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:training_task1/core/values/colors.dart';
 import 'package:training_task1/features/categories/widgets/material_botton.dart';
+import 'package:training_task1/features/login/login_controller.dart';
 import 'package:training_task1/widgets/icon_widget.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends GetView<LoginController> {
+  LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  late final LocalAuthentication auth;
-  bool _supportState = false;
-
-  @override
-  void initState() {
-    auth = LocalAuthentication();
-    auth.isDeviceSupported().then((bool isSupported) => setState(() {
-          print(isSupported);
-          _supportState = isSupported;
-        }));
-    super.initState();
-  }
+  LoginController controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +24,11 @@ class _LoginScreenState extends State<LoginScreen> {
               flex: 1,
             ),
             IconWidget(path: 'assets/icons/Vector.svg'),
-            if (_supportState)
-              const Text('supported device')
-            else
-              const Text('not supported'),
+            Obx(
+              () => controller.hasFingerPrintLock.value
+                  ? const Text('support fingerprint auth')
+                  : const Text('not supported'),
+            ),
             const Spacer(
               flex: 1,
             ),
@@ -50,9 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Expanded(
                       child: MyMaterialBotton(
-                        onPress: () {
-                          _getAvailabeBiometrics;
-                        },
+                        onPress: () => controller.authenticateUser(),
                         text: 'Unlock App',
                         textColor: Colors.white,
                         bottonColor: primaryColor,
@@ -64,17 +50,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       )),
     );
-  }
-
-  Future<void> _getAvailabeBiometrics() async {
-    print('here');
-    List<BiometricType> availableBiometrics =
-        await auth.getAvailableBiometrics();
-    print("list AvailableBiometrics: $availableBiometrics");
-
-//if State object is disposed return
-    if (!mounted) {
-      return;
-    }
   }
 }
