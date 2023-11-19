@@ -41,7 +41,7 @@ class EditTimeWidget extends StatelessWidget {
                     editController.dateIsUpdated.value
                         ? editController.formatUpdatedDate()
                         : '${Get.find<HomeController>().formatDay(task)} At ${task.time}',
-                    style: textTheme(16, null, null),
+                    style: textTheme(12, null, null),
                   )
                 ],
               ),

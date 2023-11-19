@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:training_task1/core/values/colors.dart';
 import 'package:training_task1/core/values/values.dart';
 import 'package:training_task1/features/categories/controllers/create_category_controller.dart';
 import 'package:training_task1/features/categories/screens/choose_color_screen.dart';
@@ -32,7 +31,7 @@ class CreateCategoryScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Create New Category',
-                          style: textTheme(22, null, null),
+                          style: textTheme(20, null, null),
                         ),
                         const SizedBox(
                           height: 20,

@@ -48,7 +48,7 @@ class EditCategoryWidget extends StatelessWidget {
                           editController.categoryIsUpdated
                               ? editController.category.icon
                               : category.icon,
-                          size: 30,
+                          size: 24,
                         ),
                         const SizedBox(
                           width: 5,
@@ -57,7 +57,7 @@ class EditCategoryWidget extends StatelessWidget {
                           editController.categoryIsUpdated
                               ? editController.category.name
                               : category.name,
-                          style: textTheme(16, null, null),
+                          style: textTheme(12, null, null),
                         )
                       ],
                     ),

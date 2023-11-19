@@ -27,7 +27,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Obx(
                     () => Text(
                       "Tasks ${taskController.tasksCount}",
-                      style: const TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ),
                   const Text(

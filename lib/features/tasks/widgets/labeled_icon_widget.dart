@@ -26,7 +26,7 @@ class LabeledIconWidget extends StatelessWidget {
             ),
             Text(
               text,
-              style: textTheme(20, null, color ?? Colors.white),
+              style: textTheme(16, null, color ?? Colors.white),
             )
           ],
         ),

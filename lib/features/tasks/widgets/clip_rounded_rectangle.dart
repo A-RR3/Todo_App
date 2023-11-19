@@ -1,8 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ClipRoundedRectangle extends StatelessWidget {
   const ClipRoundedRectangle(
-      {super.key, required this.press, required this.child, required this.color});
+      {super.key,
+      required this.press,
+      required this.child,
+      required this.color});
   final VoidCallback press;
   final Widget child;
   final Color color;
@@ -13,7 +18,7 @@ class ClipRoundedRectangle extends StatelessWidget {
       child: InkWell(
           onTap: press,
           child: Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(4),

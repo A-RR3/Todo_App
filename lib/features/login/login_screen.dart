@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     auth = LocalAuthentication();
     auth.isDeviceSupported().then((bool isSupported) => setState(() {
+          print(isSupported);
           _supportState = isSupported;
         }));
     super.initState();

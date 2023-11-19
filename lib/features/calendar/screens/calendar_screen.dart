@@ -27,7 +27,7 @@ class MyCalendarScreen extends StatelessWidget {
         forceMaterialTransparency: true,
         title: Text(
           'Calendar',
-          style: textTheme(22, FontWeight.normal, null),
+          style: textTheme(20, FontWeight.w400, null),
         ),
         centerTitle: true,
         leading: IconButton(
@@ -49,7 +49,7 @@ class MyCalendarScreen extends StatelessWidget {
                   days.length,
                   (index) => Text(
                         days[index],
-                        style: textTheme(14, null, null),
+                        style: textTheme(12, FontWeight.w500, null),
                       ),
                   growable: false)),
           const Divider(
@@ -62,7 +62,6 @@ class MyCalendarScreen extends StatelessWidget {
                 PagedVerticalCalendar(
                   minDate: DateTime.utc(2023, 10, 20),
                   maxDate: DateTime.utc(2024, 11, 20),
-                  // initialDate: DateTime.now(),
                   invisibleMonthsThreshold: 1,
                   startWeekWithSunday: true,
                   onDayPressed: (date) {
@@ -87,7 +86,7 @@ class MyCalendarScreen extends StatelessWidget {
                               child: Center(
                                   child: Text(
                                 '${date.day}',
-                                style: textTheme(16, FontWeight.w600, null),
+                                style: textTheme(18, FontWeight.w500, null),
                               ))))),
                     );
                   },

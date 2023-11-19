@@ -29,7 +29,7 @@ class EditTitleSection extends StatelessWidget {
                         '${task.title}',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: textTheme(22, FontWeight.w700, null),
+                        style: textTheme(20, null, null),
                       ),
                     ),
                     Flexible(
@@ -43,7 +43,7 @@ class EditTitleSection extends StatelessWidget {
                 ),
                 Text(
                   '${task.description}',
-                  style: textTheme(20, FontWeight.w300, null),
+                  style: textTheme(16, FontWeight.w300, null),
                 ),
               ],
             ),

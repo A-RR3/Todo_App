@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'ToDo App',
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home:  MyHomePage(),
     );
   }
 }

@@ -10,11 +10,11 @@ class DropDownMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 50,
+        height: 30,
         decoration: BoxDecoration(
             color: greyShadow.withOpacity(.6),
             borderRadius: BorderRadius.circular(6)),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Obx(
           () => DropdownButton<String>(
             value: homeController.selectedValue.value,

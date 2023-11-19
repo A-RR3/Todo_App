@@ -14,7 +14,7 @@ class LabeledWidget extends StatelessWidget {
       children: [
         Text(
           label,
-          style: textTheme(20, null, null),
+          style: textTheme(16, null, null),
         ),
         const SizedBox(
           height: 20,
