@@ -14,6 +14,7 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
+//to return a true result open the emulator go to settings -> imprint&password -> three dots ->fingerprint ->tap on any fingerprint
   Future<bool> canAuthenticate() async =>
       await _auth.canCheckBiometrics || await _auth.isDeviceSupported();
 

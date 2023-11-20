@@ -23,6 +23,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() async {
+    //insert some categories in the DB when it is first initialized
     // await createCategories();
     await getCategories();
     await getTasks();
@@ -105,19 +106,20 @@ class HomeController extends GetxController {
     Get.bottomSheet(const AddNewTaskScreen());
   }
 
-  // Future<void> createCategories() async {
-  //   List<Category> categories = [
-  //     Category.create(
-  //         name: 'education',
-  //         icon: Icons.school,
-  //         color: const Color.fromARGB(255, 99, 200, 250)),
-  //     Category.create(
-  //         name: 'food', icon: Icons.food_bank, color: Colors.orange),
-  //     Category.create(name: 'home', icon: Icons.home, color: Colors.green),
-  //     Category.create(
-  //         name: 'personal', icon: Icons.person, color: Colors.lightBlue),
-  //   ];
+  Future<void> createCategories() async {
+    StorageService dbHelper = StorageService();
+    List<Category> categories = [
+      Category.create(
+          name: 'education',
+          icon: Icons.school,
+          color: const Color.fromARGB(255, 99, 200, 250)),
+      Category.create(
+          name: 'food', icon: Icons.food_bank, color: Colors.orange),
+      Category.create(name: 'home', icon: Icons.home, color: Colors.green),
+      Category.create(
+          name: 'personal', icon: Icons.person, color: Colors.lightBlue),
+    ];
 
-  //   await dbHelper.createCategories(categories);
-  // }
+    await dbHelper.createCategories(categories);
+  }
 }

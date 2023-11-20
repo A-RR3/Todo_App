@@ -8,7 +8,6 @@ class StorageService {
   static Database? _database;
 
   Future<Database> get database async {
-    
     _database ??= await _initDb();
     return _database!;
   }
@@ -56,17 +55,6 @@ class StorageService {
     ''');
   }
 
-  Future<int> addTask(Task task) async {
-    final db = await database;
-    return db.transaction((txn) async {
-      return await txn.insert(
-        "task",
-        task.toMap,
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-    });
-  }
-
   Future<void> createCategories(List<Category> categories) async {
     // get a reference to the database.
     final db = await database;
@@ -80,70 +68,5 @@ class StorageService {
       );
       print('category $i is inserted');
     }
-  }
-
-  Future<int> toggleTaskCompletion(int taskId) async {
-    final db = await database;
-    return await db.rawUpdate(
-        'UPDATE task SET isCompleted = 1 - isCompleted WHERE id = ?', [taskId]);
-  }
-
-  Future<List<Map<String, dynamic>>> getAllTasks() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query(
-      "task",
-      orderBy: "id DESC",
-    );
-    print('all tasks maps: $maps');
-    return maps;
-  }
-
-  Future<Map<String, dynamic>> getSingleTask(int id) async {
-    final db = await database;
-    List<Map<String, dynamic>> maps =
-        await db.query('task', where: "id = ?", whereArgs: [id], limit: 1);
-    return maps.first;
-  }
-
-  Future<Map<String, dynamic>> findCategory(int categoryId) async {
-    final db = await database;
-    List<Map<String, dynamic>> maps = await db.query('category',
-        where: "id = ?", whereArgs: [categoryId], limit: 1);
-    return maps.first;
-  }
-
-  Future<List<Map<String, dynamic>>> getCategories() async {
-    final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query(
-      "category",
-      orderBy: "id DESC",
-    );
-    print('all categories maps: $maps');
-    return maps;
-  }
-
-  Future<int> updateTask(Task task) async {
-    final db = await database;
-    return db.transaction((txn) async {
-      return await txn.update(
-        "task",
-        task.toMap,
-        where: 'id = ?',
-        whereArgs: [task.id],
-      );
-    });
-  }
-
-  Future<int> deleteTask(Task task) async {
-    final db = await database;
-    return db.transaction(
-      (txn) async {
-        return await txn.delete(
-          "task",
-          where: 'id = ?',
-          whereArgs: [task.id],
-        );
-      },
-    );
   }
 }
