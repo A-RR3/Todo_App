@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:paged_vertical_calendar/paged_vertical_calendar.dart';
 import 'package:training_task1/core/values/colors.dart';
 import 'package:training_task1/core/values/constants.dart';
-import 'package:training_task1/domain/entities/task.dart';
 import 'package:training_task1/features/calendar/controllers/calendar_controller.dart';
 import 'package:training_task1/features/home/widgets/task_item.dart';
 import 'package:training_task1/utils/helpers.dart';

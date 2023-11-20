@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:share_plus/share_plus.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:training_task1/data/data.dart';
 import 'package:training_task1/domain/interactors/impl/task_interactor_impl.dart';
 import 'package:training_task1/features/home/controllers/home_controller.dart';
@@ -13,7 +13,6 @@ class EditTaskController extends GetxController {
   DateTime? selectedDate = DateTime.now();
   TextEditingController? titleController;
   TextEditingController? descriptionController;
-  // RxBool errorState = false.obs;
   final RxString titleErrorText = ''.obs;
   final RxString emptyFieldError = ''.obs;
   var titleErrorState = false.obs;
@@ -104,18 +103,9 @@ class EditTaskController extends GetxController {
         !titleErrorState.value) {
       Get.back();
     }
-    //  else {
-    //   print('snackBar');
-    //   Get.snackbar('Invalid Data', 'Please enter valid title and description',
-    //       isDismissible: true,
-    //       dismissDirection: DismissDirection.up,
-    //       snackPosition: SnackPosition.TOP);
-    // }
   }
 
   void onEditBottonPressed(Task task) {
-    print('pressed');
-
     String timeFormat = Helpers.formatTimeFromDateTime(selectedDate);
     String dateFormat = Helpers.formatDateFromDateTime(selectedDate);
     Task updatedTask = task.copyWith(
@@ -129,18 +119,18 @@ class EditTaskController extends GetxController {
 
     TasksInteractorImpl service = TasksInteractorImpl();
     service.updateTask(updatedTask);
-    // Get.find<HomeController>().taskList[task.id!] = updatedTask;
     Get.find<HomeController>().getTasks();
   }
 
-  // Future<void> sharePressed(Task task) async {
-  //   await Share.share(_sharedMessage(task),subject: "I've shared this ToDo with you!");
-  // }
+  Future<void> sharePressed(Task task) async {
+    await Share.share(_sharedMessage(task),
+        subject: "I've shared this ToDo with you!");
+  }
 
-  // String _sharedMessage(Task task) {
-  //   return '''Title: ${task.title}\n
-  //   Description: ${task.description}\n
-  //   DueDate: ${task.date}\n
-  //   Category: ${category.name}''';
-  // }
+  String _sharedMessage(Task task) {
+    return '''Title: ${task.title}\n
+    Description: ${task.description}\n
+    DueDate: ${task.date}\n
+    Category: ${category.name}''';
+  }
 }

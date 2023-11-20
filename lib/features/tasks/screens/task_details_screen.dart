@@ -63,8 +63,8 @@ class TaskDetailsScreen extends StatelessWidget {
                     ShareTaskWidget(
                       pathSvg: 'assets/icons/share.svg',
                       text: 'Share Task',
-                      // press: () => editController.sharePressed(task),
-                      press: () {},
+                      press: () => editController.sharePressed(task),
+                      // press: () {},
                     ),
                     LabeledIconWidget(
                         pathSvg: 'assets/icons/calendar.svg',
