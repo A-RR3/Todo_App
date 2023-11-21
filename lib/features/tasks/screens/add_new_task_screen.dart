@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:training_task1/core/values/values.dart';
 import 'package:training_task1/features/tasks/controllers/add_new_task_controller.dart';
+import 'package:training_task1/features/tasks/controllers/task_form_controller.dart';
 import 'package:training_task1/widgets/common_text_field.dart';
 import 'package:training_task1/widgets/icon_widget.dart';
 
-class AddNewTaskScreen extends StatelessWidget {
-  const AddNewTaskScreen({super.key});
+class AddNewTaskScreen extends StatelessWidget with TaskFormController {
+  AddNewTaskScreen({super.key});
+  AddNewTaskController addTaskController = Get.put(AddNewTaskController());
   @override
   Widget build(BuildContext context) {
-    AddNewTaskController addTaskController = Get.put(AddNewTaskController());
-
     return GetBuilder<AddNewTaskController>(builder: (_) {
       return BottomSheet(
         elevation: 10,
@@ -23,57 +23,61 @@ class AddNewTaskScreen extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Add Task',
-                    style: textTheme(20, null, null),
-                  ),
-                  const SizedBox(height: 12),
-                  Obx(() => CommonTextField(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Add Task',
+                      style: textTheme(20, null, null),
+                    ),
+                    const SizedBox(height: 12),
+                    CommonTextField(
                         hintText: "Task Title",
                         controller: addTaskController.titleController!,
-                        errorText: addTaskController.errorState.value
-                            ? 'Text length should be less than 25 characters.'
-                            : null,
-                      )),
-                  const SizedBox(height: 12),
-                  CommonTextField(
-                    hintText: 'Task Description',
-                    controller: addTaskController.descriptionController!,
-                    maxLines: 3,
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                          flex: 1,
-                          child: Row(
-                            children: [
-                              IconWidget(
-                                path: 'assets/icons/timer.svg',
-                                press: () => addTaskController
-                                    .selectDateTime(Get.context!),
-                                size: 25,
-                              ),
-                              IconWidget(
-                                path: 'assets/icons/tag.svg',
-                                press: () =>
-                                    addTaskController.onCategoryIconPressed(),
-                                size: 30,
-                              )
-                            ],
-                          )),
-                      IconWidget(
-                        path: 'assets/icons/send.svg',
-                        press: () => addTaskController.validateTaskData(),
-                        size: 25,
-                      ),
-                    ],
-                  ),
-                ],
+                        validator: (value) => validateTitleInput(value)),
+                    const SizedBox(height: 12),
+                    CommonTextField(
+                      hintText: 'Task Description',
+                      controller: addTaskController.descriptionController!,
+                      validator: (value) => validateDescription(value),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                            flex: 1,
+                            child: Row(
+                              children: [
+                                IconWidget(
+                                  path: 'assets/icons/timer.svg',
+                                  press: () => addTaskController
+                                      .selectDateTime(Get.context!),
+                                  size: 25,
+                                ),
+                                IconWidget(
+                                  path: 'assets/icons/tag.svg',
+                                  press: () =>
+                                      addTaskController.onCategoryIconPressed(),
+                                  size: 30,
+                                )
+                              ],
+                            )),
+                        IconWidget(
+                          path: 'assets/icons/send.svg',
+                          press: () {
+                            onSubmitForm;
+                            addTaskController.addNewTask();
+                            Get.back();
+                          },
+                          size: 25,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );

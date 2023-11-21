@@ -102,7 +102,7 @@ class HomeController extends GetxController {
   }
 
   void onAddNewTaskPressed() {
-    Get.bottomSheet(const AddNewTaskScreen());
+    Get.bottomSheet(AddNewTaskScreen());
   }
 
   Future<void> createCategories() async {

@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:training_task1/core/values/colors.dart';
 import 'package:training_task1/core/values/constants.dart';
+import 'package:training_task1/features/categories/controllers/task_controller.dart';
 import 'package:training_task1/features/categories/screens/create_category_screen.dart';
 import 'package:training_task1/features/categories/widgets/material_botton.dart';
 import 'package:training_task1/features/home/controllers/home_controller.dart';
-import 'package:training_task1/features/tasks/controllers/add_new_task_controller.dart';
 import '../widgets/category_item.dart';
 
 class ChooseCategoryScreen extends StatelessWidget {
-  ChooseCategoryScreen({super.key});
+  ChooseCategoryScreen({super.key, required this.controller});
 
-  final addNewTaskController = Get.find<AddNewTaskController>();
-
+  // final addNewTaskController = Get.find<AddNewTaskController>();
+  final homeController = Get.find<HomeController>();
+  final TaskController controller;
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.find<HomeController>();
-
     return Dialog(
       backgroundColor: greyShadow,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
@@ -54,12 +53,7 @@ class ChooseCategoryScreen extends StatelessWidget {
                           name: categories[index].name,
                           color: categories[index].color,
                           onTap: () {
-                            //function in the add task screen that changes tha value of category id
-                            addNewTaskController
-                                .onCategoryTypePressed(index + 1);
-
-                            print(index + 1);
-                            print(categories[index].id);
+                            controller.onCategoryTypePressed(index + 1);
                           },
                         );
                       } else {
@@ -98,14 +92,3 @@ class ChooseCategoryScreen extends StatelessWidget {
     );
   }
 }
-
-  // Expanded(
-  //                 child: GridView(
-  //                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //                         crossAxisCount: 3),
-  //                     children: List.generate(
-  //                         3,
-  //                         (index) => Container(
-  //                               color: Colors.red,
-  //                               child: Text("${index}"),
-  //                             ))))

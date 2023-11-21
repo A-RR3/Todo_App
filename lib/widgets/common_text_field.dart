@@ -6,20 +6,18 @@ class CommonTextField extends StatelessWidget {
       {super.key,
       required this.hintText,
       required this.controller,
-      this.onChanged,
-      this.maxLines,
+      this.validator,
       this.errorText});
   final TextEditingController controller;
   final String hintText;
-  final int? maxLines;
-  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
   final String? errorText;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: validator,
       controller: controller,
-      // style: const TextStyle(fontSize: 15),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(10),
         hintText: hintText,
@@ -31,8 +29,6 @@ class CommonTextField extends StatelessWidget {
         filled: true,
         fillColor: greyShadow,
       ),
-      maxLines: maxLines,
-      onChanged: onChanged,
     );
   }
 }

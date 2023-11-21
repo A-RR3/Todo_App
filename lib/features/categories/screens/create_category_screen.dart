@@ -37,12 +37,13 @@ class CreateCategoryScreen extends StatelessWidget {
                           height: 20,
                         ),
                         LabeledWidget(
-                            label: 'Category name:',
+                          label: 'Category name:',
+                          controller: controller.categoryNameController!,
+                          widget: CommonTextField(
+                            hintText: 'Category Name',
                             controller: controller.categoryNameController!,
-                            widget: CommonTextField(
-                                hintText: 'Category Name',
-                                controller:
-                                    controller.categoryNameController!)),
+                          ),
+                        ),
                         LabeledWidget(
                           label: 'Category icon',
                           widget: InkWell(
