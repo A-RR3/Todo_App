@@ -20,6 +20,7 @@ class HomeController extends GetxController {
 
   //database
   TasksInteractorImpl service = TasksInteractorImpl();
+  CategoriesInteractorImpl cat = CategoriesInteractorImpl();
 
   @override
   void onInit() async {
@@ -107,7 +108,8 @@ class HomeController extends GetxController {
   }
 
   Future<void> createCategories() async {
-    StorageService dbHelper = StorageService();
+    // StorageService dbHelper = StorageService();
+    CategoriesInteractorImpl service = CategoriesInteractorImpl();
     List<Category> categories = [
       Category.create(
           name: 'education',
@@ -120,6 +122,9 @@ class HomeController extends GetxController {
           name: 'personal', icon: Icons.person, color: Colors.lightBlue),
     ];
 
-    await dbHelper.createCategories(categories);
+    // ignore: avoid_function_literals_in_foreach_calls
+    categories.forEach((category) async {
+      await service.createCategory(category);
+    });
   }
 }

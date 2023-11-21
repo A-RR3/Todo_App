@@ -53,19 +53,4 @@ class StorageService {
       )
     ''');
   }
-
-  Future<void> createCategories(List<Category> categories) async {
-    // get a reference to the database.
-    final db = await database;
-    final categories0 = categories.map((category) => category.toMap).toList();
-
-    for (int i = 0; i < categories0.length; ++i) {
-      await db.insert(
-        "category",
-        categories0[i],
-        conflictAlgorithm: ConflictAlgorithm.replace,
-      );
-      print('category $i is inserted');
-    }
-  }
 }

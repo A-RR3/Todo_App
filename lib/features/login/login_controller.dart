@@ -53,8 +53,7 @@ class LoginController extends GetxController {
             useErrorDialogs: true,
           ));
       if (isUserAuthenticated.value) {
-        // showSnackBar('Success', 'You are authenticated', Colors.green);
-        Future.delayed(const Duration(seconds: 2), () => Get.off(MyHomePage()));
+        Get.off(MyHomePage());
       }
     } catch (e) {
       debugPrint('error $e');
