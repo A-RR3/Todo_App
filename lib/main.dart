@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'ToDo App',
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark(
+        useMaterial3: false
+      ),
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
     );
