@@ -52,13 +52,11 @@ class AddNewTaskScreen extends StatelessWidget {
                           flex: 1,
                           child: Row(
                             children: [
-                              IconButton(
-                                onPressed: () {
-                                  addTaskController
-                                      .selectDateTime(Get.context!);
-                                },
-                                icon: const Icon(Icons.calendar_month_outlined),
-                                iconSize: 25,
+                              IconWidget(
+                                path: 'assets/icons/timer.svg',
+                                press: () => addTaskController
+                                    .selectDateTime(Get.context!),
+                                size: 25,
                               ),
                               IconWidget(
                                 path: 'assets/icons/tag.svg',
@@ -68,14 +66,11 @@ class AddNewTaskScreen extends StatelessWidget {
                               )
                             ],
                           )),
-                      IconButton(
-                        onPressed: () {
-                          addTaskController.validateTaskData();
-                          // Get.back(); // this deletes the controller
-                        },
-                        icon: const Icon(Icons.send),
-                        iconSize: 25,
-                      )
+                      IconWidget(
+                        path: 'assets/icons/send.svg',
+                        press: () => addTaskController.validateTaskData(),
+                        size: 25,
+                      ),
                     ],
                   ),
                 ],
