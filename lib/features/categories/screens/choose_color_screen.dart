@@ -11,14 +11,14 @@ class ChooseColorScreen extends StatelessWidget {
   // final controller = Get.find<CreateCategoryController>();
 
   List<int> colorsList = [
-    color1,
-    color2,
-    color3,
-    color4,
-    color5,
-    color6,
-    color7,
-    color8,
+    category1,
+    category2,
+    category3,
+    category4,
+    category5,
+    category6,
+    category7,
+    category8,
     redAccent,
     orangeAccent,
     hotPink,

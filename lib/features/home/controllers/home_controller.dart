@@ -20,7 +20,6 @@ class HomeController extends GetxController {
 
   //database
   TasksInteractorImpl service = TasksInteractorImpl();
-  CategoriesInteractorImpl cat = CategoriesInteractorImpl();
 
   @override
   void onInit() async {
@@ -108,7 +107,6 @@ class HomeController extends GetxController {
   }
 
   Future<void> createCategories() async {
-    // StorageService dbHelper = StorageService();
     CategoriesInteractorImpl service = CategoriesInteractorImpl();
     List<Category> categories = [
       Category.create(

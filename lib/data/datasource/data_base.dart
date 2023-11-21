@@ -1,6 +1,5 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:training_task1/domain/entities/categories.dart';
 
 class StorageService {
 //to create one instance of the database
