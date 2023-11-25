@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:training_task1/data/data.dart';
-import 'package:training_task1/domain/interactors/impl/task_interactor_impl.dart';
+import 'package:training_task1/domain/implementation/interface/task_interactor.dart';
+import 'package:training_task1/domain/implementation/task_interactor_impl.dart';
 import 'package:training_task1/utils/helpers.dart';
-import 'package:training_task1/domain/interactors/impl/category_interactor_impl.dart';
+import 'package:training_task1/domain/implementation/category_interactor_impl.dart';
 import 'package:training_task1/features/tasks/screens/add_new_task_screen.dart';
 
 class HomeController extends GetxController {
   //variables
-  var taskList = <Task>[].obs;
+  RxList<Task> taskList = <Task>[].obs;
   var doneTodos = <Task>[].obs;
   var selectedValue = 'All'.obs;
-  RxString dayFormat = 'Today'.obs;
+  // RxString dayFormat = 'Today'.obs;
   RxBool isLoading = true.obs;
   var categoriesList = <Category>[].obs;
   //getters
   RxInt get tasksCount => taskList.length.obs;
 
   //database
-  TasksInteractorImpl service = TasksInteractorImpl();
+  TasksInterface service = TasksInteractor();
 
   @override
   void onInit() async {
     //insert some categories in the DB when it is first initialized
-    // await createCategories();
-    await getCategories();
     await getTasks();
     getDoneTasks();
     super.onInit();
@@ -35,10 +34,11 @@ class HomeController extends GetxController {
     bool isEqualToday = dueDate.toString().split(' ')[0] ==
         DateTime.now().toString().split(' ')[0];
 
-    if (!isEqualToday) {
-      return dayFormat.value = Helpers.formatDayFromDateTime(dueDate);
+    if (isEqualToday) {
+      return 'Today';
     }
-    return dayFormat.value = 'Today';
+    return Helpers.formatDayFromDateTime(dueDate);
+    // return dayFormat.value = 'Today';
   }
 
   Future<void> getTasks() async {
@@ -50,17 +50,12 @@ class HomeController extends GetxController {
     doneTodos.value = taskList.where((item) => item.isCompleted).toList();
   }
 
-  Future<Category> getCategory(int categoryId) async {
-    final CategoriesInteractorImpl service = CategoriesInteractorImpl();
-    return await service.findCategory(categoryId);
-  }
-
   Category getTaskCategory(int categoryId) {
     return categoriesList.singleWhere((element) => element.id == categoryId);
   }
 
   Future<void> getCategories() async {
-    CategoriesInteractorImpl service = CategoriesInteractorImpl();
+    CategoriesInteractor service = CategoriesInteractor();
     categoriesList.value = await service.getCategories();
   }
 
@@ -103,25 +98,5 @@ class HomeController extends GetxController {
 
   void onAddNewTaskPressed() {
     Get.bottomSheet(AddNewTaskScreen());
-  }
-
-  Future<void> createCategories() async {
-    CategoriesInteractorImpl service = CategoriesInteractorImpl();
-    List<Category> categories = [
-      Category.create(
-          name: 'education',
-          icon: Icons.school,
-          color: const Color.fromARGB(255, 99, 200, 250)),
-      Category.create(
-          name: 'food', icon: Icons.food_bank, color: Colors.orange),
-      Category.create(name: 'home', icon: Icons.home, color: Colors.green),
-      Category.create(
-          name: 'personal', icon: Icons.person, color: Colors.lightBlue),
-    ];
-
-    // ignore: avoid_function_literals_in_foreach_calls
-    categories.forEach((category) async {
-      await service.createCategory(category);
-    });
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:training_task1/core/values/constants.dart';
-import 'package:training_task1/widgets/icon_widget.dart';
+import 'package:training_task1/core/widgets/icon_widget.dart';
 
 class LabeledIconWidget extends StatelessWidget {
   const LabeledIconWidget(

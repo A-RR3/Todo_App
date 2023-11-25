@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:training_task1/core/values/values.dart';
 import 'package:training_task1/features/tasks/controllers/add_new_task_controller.dart';
 import 'package:training_task1/features/tasks/controllers/task_form_controller.dart';
-import 'package:training_task1/widgets/common_text_field.dart';
-import 'package:training_task1/widgets/icon_widget.dart';
+import 'package:training_task1/core/widgets/common_text_field.dart';
+import 'package:training_task1/core/widgets/icon_widget.dart';
 
 class AddNewTaskScreen extends StatelessWidget with TaskFormController {
   AddNewTaskScreen({super.key});

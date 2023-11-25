@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:training_task1/domain/entities/categories.dart';
-import 'package:training_task1/domain/interactors/impl/category_interactor_impl.dart';
+import 'package:training_task1/domain/implementation/category_interactor_impl.dart';
 import 'package:training_task1/features/categories/screens/choose_icon_screen.dart';
 import 'package:training_task1/features/home/controllers/home_controller.dart';
 
@@ -36,16 +36,15 @@ class CreateCategoryController extends GetxController {
   }
 
   void createCategory() async {
-    CategoriesInteractorImpl service = CategoriesInteractorImpl();
+    CategoriesInteractor service = CategoriesInteractor();
     final controller = Get.find<HomeController>();
     Category category = Category.create(
         name: categoryNameController!.text,
         icon: selectedCategoryIcon!,
         color: Color(selectedCategoryColor!));
     await service.createCategory(category);
-    controller.categoriesList.insert(
-      controller.categoriesList.length, 
-      category);
+    controller.categoriesList
+        .insert(controller.categoriesList.length, category);
     controller.categoriesList.refresh();
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:training_task1/data/data.dart';
-import 'package:training_task1/domain/interactors/impl/task_interactor_impl.dart';
+import 'package:training_task1/domain/implementation/task_interactor_impl.dart';
 import 'package:training_task1/features/categories/controllers/task_controller.dart';
 import 'package:training_task1/features/categories/screens/choose_category_screen.dart';
 import 'package:training_task1/features/home/controllers/home_controller.dart';
@@ -32,7 +32,6 @@ class EditTaskController extends GetxController implements TaskController {
     super.onClose();
   }
 
-
   Future<void> selectDateTime(BuildContext context) async {
     DateTime? pickedDate = await Helpers.selectDate(context);
     TimeOfDay? pickedTime = TimeOfDay.now();
@@ -53,10 +52,12 @@ class EditTaskController extends GetxController implements TaskController {
   }
 
   void onChangeCategory() {
-    Get.dialog(ChooseCategoryScreen(controller: Get.find<EditTaskController>(),));
+    Get.dialog(ChooseCategoryScreen(
+      controller: Get.find<EditTaskController>(),
+    ));
   }
 
-@override
+  @override
   void onCategoryTypePressed(int index) {
     categoryId = index;
     categoryIsUpdated = true;
@@ -73,17 +74,21 @@ class EditTaskController extends GetxController implements TaskController {
   void onEditBottonPressed(Task task) {
     String timeFormat = Helpers.formatTimeFromDateTime(selectedDate);
     String dateFormat = Helpers.formatDateFromDateTime(selectedDate);
-    Task updatedTask = task.copyWith(
-        id: task.id,
-        title: titleController!.text,
-        description: descriptionController!.text,
-        categoryId: categoryId,
-        date: dateFormat,
-        time: timeFormat,
-        isCompleted: false);
+    // Task updatedTask = task.copyWith(
+    //     id: task.id,
+    //     title: titleController!.text,
+    //     description: descriptionController!.text,
+    //     categoryId: categoryId,
+    //     date: dateFormat,
+    //     time: timeFormat,
+    //     isCompleted: false);
+    //TODO: CASCADE OPERATOR
+    task
+      ..title = titleController!.text
+      ..description = descriptionController!.text;
 
-    TasksInteractorImpl service = TasksInteractorImpl();
-    service.updateTask(updatedTask);
+    TasksInteractor service = TasksInteractor();
+    service.updateTask(task);
     Get.find<HomeController>().getTasks();
   }
 

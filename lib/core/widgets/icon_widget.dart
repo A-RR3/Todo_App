@@ -13,9 +13,6 @@ class IconWidget extends StatelessWidget {
     return IconButton(
       onPressed: press,
       icon:
-          // ColorFiltered(
-          // colorFilter: const ColorFilter.mode(
-          //     Colors.white, BlendMode.srcIn), // Set the color and blend mode
           SvgPicture.asset(path!,),
       iconSize: size ?? 40.0,
     );

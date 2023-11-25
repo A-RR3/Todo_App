@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:training_task1/data/data.dart';
-import 'package:training_task1/domain/interactors/impl/task_interactor_impl.dart';
+import 'package:training_task1/domain/implementation/task_interactor_impl.dart';
 import 'package:training_task1/features/categories/controllers/task_controller.dart';
 import 'package:training_task1/features/categories/screens/choose_category_screen.dart';
 import 'package:training_task1/features/home/controllers/home_controller.dart';
@@ -14,12 +14,10 @@ class AddNewTaskController extends GetxController implements TaskController {
   TextEditingController? descriptionController;
   DateTime? selectedDate = DateTime.now();
   int categoryId = 0;
-  RxBool errorState = false.obs;
+  TasksInteractor service = TasksInteractor();
+  // RxBool errorState = false.obs;
 
-  TasksInteractorImpl service = TasksInteractorImpl();
   HomeController homeController = Get.find<HomeController>();
-  
-
 
   @override
   void onInit() async {
@@ -39,7 +37,6 @@ class AddNewTaskController extends GetxController implements TaskController {
     return await service.getSingleTask(id);
   }
 
-
   @override
   void onCategoryTypePressed(int index) {
     categoryId = index;
@@ -57,9 +54,7 @@ class AddNewTaskController extends GetxController implements TaskController {
     await service.addTask(task);
     homeController.taskList.add(task);
     homeController.taskList.refresh();
-
   }
-
 
   void selectDateTime(BuildContext context) async {
     DateTime? pickedDate = await Helpers.selectDate(context);
@@ -74,6 +69,8 @@ class AddNewTaskController extends GetxController implements TaskController {
   }
 
   void onCategoryIconPressed() {
-    Get.dialog(ChooseCategoryScreen(controller: Get.find<AddNewTaskController>(),));
+    Get.dialog(ChooseCategoryScreen(
+      controller: Get.find<AddNewTaskController>(),
+    ));
   }
 }

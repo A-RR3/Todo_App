@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
         body: _showTaskts(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xFF8687E7),
-          onPressed: () => controller.onAddNewTaskPressed(),
+          onPressed: controller.onAddNewTaskPressed,
           tooltip: 'Add Task',
           child: const Icon(Icons.add),
         ));

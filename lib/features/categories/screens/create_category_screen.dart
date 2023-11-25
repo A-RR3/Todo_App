@@ -5,7 +5,7 @@ import 'package:training_task1/features/categories/controllers/create_category_c
 import 'package:training_task1/features/categories/screens/choose_color_screen.dart';
 import 'package:training_task1/features/categories/widgets/labeled_text_field.dart';
 import 'package:training_task1/features/categories/widgets/material_botton.dart';
-import 'package:training_task1/widgets/common_text_field.dart';
+import 'package:training_task1/core/widgets/common_text_field.dart';
 
 class CreateCategoryScreen extends StatelessWidget {
   CreateCategoryScreen({super.key});

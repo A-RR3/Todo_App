@@ -6,7 +6,7 @@ import 'package:training_task1/domain/entities/task.dart';
 import 'package:training_task1/features/categories/widgets/material_botton.dart';
 import 'package:training_task1/features/tasks/controllers/edit_task_controller.dart';
 import 'package:training_task1/features/tasks/controllers/task_form_controller.dart';
-import 'package:training_task1/widgets/common_text_field.dart';
+import 'package:training_task1/core/widgets/common_text_field.dart';
 
 class EditTaskTitle extends StatelessWidget with TaskFormController {
   EditTaskTitle({super.key, required this.task});

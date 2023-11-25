@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 
-const workIcon = Icons.work ; //0xe8f9 codepoint in hexadecimal format//IconData customIcon = IconData(0xe8f9, fontFamily: 'MaterialIcons');
-const travelIcon = Icons.flight;
-const socialIcon = Icons.people;
-const shoppingIcon = Icons.shopping_bag;
-const healthIcon = Icons.medical_services;
-const relationships = Icons.favorite;
-const personalIcon = Icons.person;
-const homeIcon = Icons.home;
-const educationIcon = Icons.school;
-const addIcon = Icons.add;
 
-
-
-
-
+const String vectorIcon = 'assets/icons/Vector.svg';
+const String timerIcon = 'assets/icons/timer.svg';
+const String tagIcon = 'assets/icons/tag.svg';
+const String sendIcon = 'assets/icons/send.svg';
+const String editIcon = 'assets/icons/edit.svg';
+const String shareIcon = 'assets/icons/share.svg';
+const String calendarIcon = 'assets/icons/calendar.svg';
+const String trashIcon = 'assets/icons/trash.svg';

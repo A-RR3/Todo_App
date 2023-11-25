@@ -1,10 +1,10 @@
 import 'package:training_task1/data/datasource/database_services.dart';
 import 'package:training_task1/domain/entities/categories.dart';
-import 'package:training_task1/domain/interactors/interface/category_interactor.dart';
+import 'package:training_task1/domain/interfaces/category_interactor.dart';
 import 'package:training_task1/utils/utils.dart';
 
 class CategoriesServices extends DataBaseServices<Category>
-    implements CategoriesInteractor {
+    implements CategoriesInterface {
   String get table => AppKeys.categoryTable;
 
   @override
@@ -13,18 +13,17 @@ class CategoriesServices extends DataBaseServices<Category>
   }
 
   @override
-  Future<Category> findCategory(int categoryId) async{
-    return retrieveOne(table,Category.fromMap,categoryId);
+  Future<Category> findCategory(int categoryId) async {
+    return retrieveOne(table, Category.fromMap, categoryId);
   }
 
   @override
-  Future<List<Category>> getCategories() async{
+  Future<List<Category>> getCategories() async {
     return retrieveAll(table, Category.fromMap);
   }
 
-   @override
+  @override
   Future<int> deleteCategory(Category model) async {
     return await delete(model);
   }
-
 }

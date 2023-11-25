@@ -1,6 +1,6 @@
 import 'package:training_task1/domain/entities/categories.dart';
 
-abstract class CategoriesInteractor {
+abstract interface class CategoriesInterface {
   Future<List<Category>> getCategories();
   Future<Category> findCategory(int categoryId);
   Future<int> createCategory(Category category);

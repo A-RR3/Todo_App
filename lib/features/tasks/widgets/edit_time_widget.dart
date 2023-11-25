@@ -14,8 +14,7 @@ class EditTimeWidget extends StatelessWidget {
       required this.task,
       required this.onPressed});
   final String pathSvg;
-  // final String day;
-  // final String time;
+
   final Task task;
   final VoidCallback onPressed;
   final editController = Get.find<EditTaskController>();

@@ -9,12 +9,12 @@ abstract class DataBaseServices<T extends BaseEntity> {
   Future<int> create(T model) async {
     //static field database rather than a static method
     final db = await storage.database;
-    return await db.insert(model.table, model.toMap);
+    return await db.insert(model.table, model.toMap());
   }
 
   Future<int> update(T model) async {
     final db = await storage.database;
-    return await db.update(model.table, model.toMap,
+    return await db.update(model.table, model.toMap(),
         where: _whereId, whereArgs: [model.id]);
   }
 

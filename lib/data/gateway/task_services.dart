@@ -1,9 +1,10 @@
-import 'package:training_task1/data/data.dart';
 import 'package:training_task1/data/datasource/database_services.dart';
+import 'package:training_task1/domain/entities/task.dart';
+import 'package:training_task1/domain/implementation/interface/task_interactor.dart';
 import 'package:training_task1/utils/data_base_config.dart';
 
 //task provider
-class TaskServices extends DataBaseServices<Task> implements TasksInteractor {
+class TaskServices extends DataBaseServices<Task> implements TasksInterface {
   String get table => AppKeys.taskTable;
 
   @override

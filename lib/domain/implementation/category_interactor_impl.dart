@@ -1,12 +1,11 @@
 import 'package:training_task1/domain/entities/categories.dart';
-import 'package:training_task1/domain/interactors/interface/category_interactor.dart';
-import 'package:training_task1/domain/gateway/category_services.dart';
+import 'package:training_task1/domain/interfaces/category_interactor.dart';
+import 'package:training_task1/data/gateway/category_services.dart';
 
-class CategoriesInteractorImpl implements CategoriesInteractor {
-  // final _gateway = CategoryProvider();
+class CategoriesInteractor implements CategoriesInterface {
   final CategoriesServices _gateway;
 
-  CategoriesInteractorImpl() : _gateway = CategoriesServices();
+  CategoriesInteractor() : _gateway = CategoriesServices();
 
   @override
   Future<List<Category>> getCategories() async {

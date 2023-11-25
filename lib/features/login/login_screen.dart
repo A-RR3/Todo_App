@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:training_task1/core/values/colors.dart';
 import 'package:training_task1/features/categories/widgets/material_botton.dart';
 import 'package:training_task1/features/login/login_controller.dart';
-import 'package:training_task1/widgets/icon_widget.dart';
+import 'package:training_task1/core/widgets/icon_widget.dart';
 
 class LoginScreen extends GetView<LoginController> {
   LoginScreen({super.key});
